@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Modifier la région</h1>
+    
+    {{ include('region/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    <br>
+    <a class="btn btn-outline-primary" href="{{ path('region_index') }}">Retour à la liste des régions</a>
+    <br><br>
+    {{ include('region/_delete_form.html.twig') }}
+    
+{% endblock %}

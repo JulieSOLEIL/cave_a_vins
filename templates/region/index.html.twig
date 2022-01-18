@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Liste des régions</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID du vin</th>
+                <th>Région</th>
+                <th>Voir la région</th>
+                <th>Modifier la région</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+        {% for region in regions %}
+            <tr>
+                <td>{{ region.id }}</td>
+                <td>{{ region.region }}</td>
+                <td>
+                    <a class="btn btn-outline-info" href="{{ path('region_show', {'id': region.id}) }}">ici</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-info" href="{{ path('region_edit', {'id': region.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun résultat retrouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <a class="btn btn-outline-primary" href="{{ path('region_new') }}">Créer une nouvelle entrée</a>
+{% endblock %}

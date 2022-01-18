@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Créer nouvelle entrée</h1>
+
+    {{ include('vin/_form.html.twig') }}
+    <br>
+
+    <a class="btn btn-outline-primary" href="{{ path('vin.list') }}">Retour à la page précédente</a>
+
+{% endblock %}

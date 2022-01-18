@@ -11,12 +11,10 @@
             <th scope="col">Contenance</th>
             <th scope="col">Robe</th>
             <th scope="col">Quantité en stock</th>
-            <th scope="col">Voir un vin</th>
-            <th scope="col">Modifier un vin</th>
+            <th scope="col">Remarques</th>
         </tr>
     </thead>
     <tbody>
-    {% for vin in vins %}
         <tr>
             <td scope="row">{{ vin.nom }}</td>
             <td >{{ vin.millesime }}</td>
@@ -24,19 +22,13 @@
             <td>{{ vin.contenance }}</td>
             <td>{{ vin.robe }}</td>
             <td>{{ vin.qteStock }}</td>
-            <td><a class="btn btn-outline-info" href="{{ path('vin.show', {id:vin.id}) }}">Cliquez ici</a></td>
-            {# <td><a class="btn btn-outline-info" href="{{ path('vin.show', {id:vin.id}) }}">Cliquez ici</a></td> #}
-
+            <td>{{ vin.remarques }}</td>
         </tr>  
-    {% else %}
-            <tr>
-                <td colspan="3">Aucun résultat retrouvé</td>
-            </tr>
-        {% endfor %}
-        
     </tbody>
 </table>
 <br>
-    <a class="btn btn-outline-primary" href="{{ path('vin.new') }}">Créer une nouvelle entrée</a>
+    <a class="btn btn-outline-secondary" href="{{ path('vin.list') }}">Retour à la page précédente</a>
+    <br><br>
+
 
 {% endblock %}
