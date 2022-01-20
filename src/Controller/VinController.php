@@ -24,16 +24,16 @@ class VinController extends AbstractController
         ]);
     }
 
-    #[Route('/vin/show/{id}', name: 'vin.show')]
-    public function show(Vin $vin): Response
-    {
-        return $this->render(
-            'vin/show.html.twig',
-            [
-                'vin' => $vin
-            ]
-        );
-    }
+    // #[Route('/vin/show/{id}', name: 'vin.show')]
+    // public function show(Vin $vin): Response
+    // {
+    //     return $this->render(
+    //         'vin/show.html.twig',
+    //         [
+    //             'vin' => $vin
+    //         ]
+    //     );
+    // }
 
     #[Route('/vin/new', name: 'vin.new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
