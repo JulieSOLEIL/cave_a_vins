@@ -27,7 +27,7 @@ class LoginController extends AbstractController
         ]);
     }
    
-    #[Route('/logout', name:'userLogout')]
+    #[Route('/deconnexion', name:'userLogout')]
     public function logout()
    {
     
@@ -54,6 +54,23 @@ class LoginController extends AbstractController
 
        return $this->renderForm('/login/newForm.html.twig', [
            'newForm' => $form
+       ]);
+   }
+
+   #[Route('user/{id}/edit', name: 'user.edit', methods: ['GET','POST'])]
+   public function edit(Request $request, User $user, EntityManagerInterface $emi): Response
+   {
+       if ($request->getMethod() === 'POST') {
+            $email = $request->get('email');
+            if ($email !== $user->getEmail()) {
+            $user->setEmail($email);
+            $emi->flush();
+
+            return $this->redirectToRoute('user.list');
+            }
+       }
+       return $this->renderForm('login/formEdit.html.twig', [
+           'user' => $user,
        ]);
    }
 }

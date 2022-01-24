@@ -55,18 +55,17 @@ class VinController extends AbstractController
         ]);
     }
 
-    // #[Route('/vin/show/{id}', name: 'vin.show')]
-    // public function show(VinRepository $repo, Request $req): Response
-    // {
-    //     $id = $req->get(Id);
+    #[Route('/vin/show/{id}', name: 'vin.show')]
+    public function show(Vin $vin): Response
+    {
 
-    //     return $this->render(
-    //         'vin/show.html.twig',
-    //         [
-    //             'vin' => $vin
-    //         ]
-    //     );
-    // }
+        return $this->render(
+            'vin/show.html.twig',
+            [
+                'vin' => $vin
+            ]
+        );
+    }
 
 }   
 
