@@ -12,7 +12,9 @@
             <th scope="col">Robe</th>
             <th scope="col">Quantité en stock</th>
             <th scope="col">Voir un vin</th>
-            <th scope="col">Modifier un vin</th>
+            {% if is_granted('ROLE_ADMIN') %}
+            <th scope="col">Modifier un vin</th> 
+            {% endif %}
         </tr>
     </thead>
     <tbody>
@@ -25,7 +27,7 @@
             <td>{{ vin.robe }}</td>
             <td>{{ vin.qteStock }}</td>
             <td><a class="btn btn-outline-info" href="{{ path('vin.show', {id:vin.id}) }}">Cliquez ici</a></td>
-            {# <td><a class="btn btn-outline-info" href="{{ path('vin.show', {id:vin.id}) }}">Cliquez ici</a></td> #}
+            <td><a class="btn btn-outline-info" href="{{ path('vin.edit', {id:vin.id}) }}">Cliquez ici</a></td>
 
         </tr>  
     {% else %}
@@ -37,6 +39,9 @@
     </tbody>
 </table>
 <br>
+    
+{% if is_granted('ROLE_ADMIN') %}
     <a class="btn btn-outline-primary" href="{{ path('vin.new') }}">Créer une nouvelle entrée</a>
+{% endif %}
 
 {% endblock %}

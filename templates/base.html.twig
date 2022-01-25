@@ -29,21 +29,23 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
 						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-						<a class="nav-link " href="{{ path('userLogout')}}">Déconnexion</a>
 							<li class="nav-item">
-								<a class="nav-link" aria-current="page" href="{{ path('vin.list') }}">Gérer le stock</a>
+								<a class="nav-link " href="{{ path('userLogout')}}">Déconnexion</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('region_index') }}">Gérer les régions</a>
+								<a class="nav-link" aria-current="page" href="{{ path('vin.list') }}"> Les Vins</a>
 							</li>
-							{% else %}
-								<li>
-									<a class="nav-link " href="login">Connexion</a>
-								</li>
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('region_index') }}">Nos Régions</a>
+							</li>
+						{% else %}
+							<li>
+								<a class="nav-link " href="login">Connexion</a>
+							</li>
 						{% endif %}
 						{% if is_granted('ROLE_ADMIN')%}
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('user.new') }}">Nouveau client</a>
+								<a class="nav-link" href="{{ path('user.list') }}">Les membres</a>
 							</li>
 						{% endif %}
 						<li class="nav-item">
@@ -53,6 +55,11 @@
 				</div>
 			</div>
 		</nav>
+		{% for message in app.flashes('notif') %}
+			<div class="flash-notice alert alert-primary" role="alert">
+				{{ message }}
+			</div>
+		{% endfor %}
 		<div class="container"> {% block body %}{% endblock %}
 			</div>
 		</body>

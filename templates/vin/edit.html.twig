@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Modifier la région</h1>
+    <h1>Modifier le vin</h1>
     
-    {{ include('region/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('vin/_form.html.twig', {'button_label': 'Mise à jour'}) }}
     <br>
-    <a class="btn btn-outline-primary" href="{{ path('region_index') }}">Retour à la liste des régions</a>
+    <a class="btn btn-outline-primary" href="{{ path('vin.list') }}">Retour à la liste des vins</a>
     <br><br>
-    {{ include('region/_delete_form.html.twig') }}
+    {{ include('vin/_delete_form.html.twig') }}
     
 {% endblock %}
