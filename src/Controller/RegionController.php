@@ -6,15 +6,16 @@ use App\Entity\Region;
 use App\Form\RegionType;
 use App\Repository\RegionRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/region')]
 class RegionController extends AbstractController
 {
-    #[Route('/', name: 'region_index', methods: ['GET'])]
+    #[Route('/list', name: 'region_index', methods: ['GET'])]
     public function index(RegionRepository $regionRepository): Response
     {
         return $this->render('region/index.html.twig', [
@@ -22,6 +23,7 @@ class RegionController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/new', name: 'region_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {

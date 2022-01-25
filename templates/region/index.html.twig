@@ -9,7 +9,9 @@
                 <th>ID du vin</th>
                 <th>Région</th>
                 <th>Voir la région</th>
+                {% if is_granted('ROLE_ADMIN') %}
                 <th>Modifier la région</th>
+                {% endif %}
             
             </tr>
         </thead>
@@ -22,7 +24,9 @@
                     <a class="btn btn-outline-info" href="{{ path('region_show', {'id': region.id}) }}">ici</a>
                 </td>
                 <td>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a class="btn btn-outline-info" href="{{ path('region_edit', {'id': region.id}) }}">Editer</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -34,5 +38,8 @@
     </table>
 
     <br>
+    {% if is_granted('ROLE_ADMIN') %}
     <a class="btn btn-outline-primary" href="{{ path('region_new') }}">Créer une nouvelle entrée</a>
+    {% endif %}
+
 {% endblock %}
