@@ -18,8 +18,11 @@ class VinController extends AbstractController
     #[Route('/vin/list', name: 'vin.list', methods: ['GET'])]
     public function list(VinRepository $vinRepository): Response
     {
+        $vins = $vinRepository->findBy([], ['qte_stock' => 'ASC']); // trier du plus petit au plu grand
+        // 'vins' => $vinRepository->findAll(),                     // trier selon la database
+
         return $this->render('vin/list.html.twig', [
-            'vins' => $vinRepository->findAll(),
+            'vins' => $vins
         ]);
     }
     
